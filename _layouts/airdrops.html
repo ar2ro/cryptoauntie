@@ -11,7 +11,7 @@ layout: default
 			{% endif %}
 		</h1>
 		<div class="hot-slider d-none">
-			{% for airdrop in site.airdrops %}
+			{% for airdrop in site.airdrops reversed %}
 				{% if airdrop.categories contains 'hot' and airdrop.lang == page.lang %}
 					{% include airdrop-card.html %}
 				{% endif %}
@@ -30,7 +30,7 @@ layout: default
 			{% endif %}
 		</h2>
 		<div class="row">
-			{% for airdrop in site.airdrops %}
+			{% for airdrop in site.airdrops reversed %}
 				{% if airdrop.lang == page.lang %}
 					<div class="col-sm-6 col-md-4 col-lg-3">
 						{% include airdrop-card.html %}
