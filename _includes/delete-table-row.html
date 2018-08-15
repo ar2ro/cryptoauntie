@@ -1,6 +1,6 @@
 <tr>
   <td class="details">
-  	{{ airdrop.title | replace: " Airdrop", ""  }} 
+  	<a href="{{ airdrop.link }}" target="_blank">{{ airdrop.title | replace: " Airdrop", ""  }}</a> 
   	<div class="d-none">{{ airdrop.content }}</div>
   </td>
   <td>{{ airdrop.end }}</td>
