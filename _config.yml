@@ -7,11 +7,11 @@
 
 # Site settings
 title:
-  en: CryptoCurrencies for the average guy.
-  es: CryptoCurrencies para la gente normal.
+  en: "CryptoAuntie: Easy to digest news and how-tos about Bitcoin and Altcoins."
+  es: "CryptoAuntie: Noticias y tutoriales de Bitcoin y Altcoins faciles de digerir."
 desc:
-  en: Make free money with crypto airdrops.
-  es: Gana dinero gratis con los airdrops de crypto monedas.
+  en: At CryptoAuntie we publish easy to digest news and how-tos about Bitcoin and Altcoins in an effort to bring cryptocurrencies to the masses - We also publish the latest Airdrops you can take part in.
+  es: En CryptoAuntie publicamos noticias y tutoriales sobre Bitcoin y Altcoins faciles de digerir, en un esfuerzo por familiarizar a las personas con las cryptomonedas - Tambien publicamos los ultimos Airdrops en los que podras recibir cryptomonedas gratis.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cryptoauntie.com" # the base hostname & protocol for your site
 multilingual:
