@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<div id="hot">
+	<div class="container-fluid">
+		<h1 class="header light">
+			{% if page.lang == 'en' %}
+				Hot and Trending Airdrops
+			{% else %}
+				Airdrops Populares
+			{% endif %}
+		</h1>
+		<div class="hot-slider d-none">
+			{% for airdrop in site.airdrops %}
+				{% if airdrop.categories contains 'hot' and airdrop.lang == page.lang %}
+					{% include airdrop-card.html %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<div class="list">
+	<div class="container">
+		<h2 class="h1 header light text-center">
+			{% if page.lang == 'en' %}
+				Latest Airdrops
+			{% else %}
+				Ultimos Airdrops
+			{% endif %}
+		</h2>
+		<div class="row">
+			{% for airdrop in site.airdrops %}
+				{% if airdrop.lang == page.lang %}
+					<div class="col-sm-6 col-md-4 col-lg-3">
+						{% include airdrop-card.html %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% include how-to-modal.html %}

@@ -1,0 +1,46 @@
+<header class="site-header">
+
+  <nav class="navbar navbar-expand-sm">
+  	<a class="navbar-brand h1" href="{% if page.lang == 'en' %}/{% else %}/es{% endif %}">
+			<img class="brand" src="/assets/images/logox50.png" alt="">
+			<span class="header light fsize09">CRYPTO</span><span class="header bold">AUNTIE</span>
+	  </a>
+	 
+	 	<div class="navbar-toggler">
+		  {% if page.lang == 'en' %}
+				<a href="/es/{{ page.name }}"><img src="/assets/images/spanish.png" alt=""></a>
+		  {% else %}
+				<a href="/{{ page.name }}"><img src="/assets/images/english.png" alt=""></a>
+		  {% endif %}
+		  <i class="fas fa-bars" role="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"></i>
+	 	</div>
+	 
+	  <div class="collapse navbar-collapse" id="mainNav">
+			<ul class="navbar-nav ml-auto">
+				{% if page.lang == 'en' %}
+					{% assign flag = 'spanish' %}
+					<li class="nav-item">
+						<a href="/" class="nav-link">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a href="/airdrops.html" class="nav-link">Airdrops</a>
+					</li>
+				{% else %}
+					{% assign flag = 'english' %}
+					<li class="nav-item">
+						<a href="/es" class="nav-link">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a href="/es/airdrops" class="nav-link">Airdrops</a>
+					</li>
+				{% endif %}
+				
+				<li class="nav-item">
+					<a href="{{ alternateLink }}" class="nav-link translator"><img src="/assets/images/{{ flag }}.png" alt=""></a>
+				</li>
+	    </ul>
+	  </div>
+	</nav>
+
+</header>
+{{ page.url }}

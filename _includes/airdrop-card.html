@@ -1,0 +1,96 @@
+{% assign email    = 'far fa-envelope' %}
+{% assign twitter  = 'fab fa-twitter' %}
+{% assign telegram = 'fab fa-telegram-plane' %}
+{% assign phone    = 'fas fa-mobile-alt' %}
+{% assign facebook = 'fab fa-facebook-f' %}
+{% assign youtube  = 'fab fa-youtube' %}
+{% assign reddit   = 'fab fa-reddit-alien' %}
+{% assign form     = 'fab fa-wpforms' %}
+{% assign kyc      = 'far fa-id-card' %}
+<div class="card airdrop">
+  <div class="card-header">
+  	<div class="bg" style="background-image: url('{{ airdrop.image }}');"></div>
+  	{% if airdrop.categories contains 'hot' %}
+  	<div class="hot">
+  		<i class="fas fa-fire"></i>
+  	</div>
+  	{% endif %}
+  	<h3 class="header bold">{{ airdrop.title }}</h3>
+  </div>
+  <div class="card-categories">
+  	{% for category in airdrop.categories %}
+  		<i class="{{ [category] }}"></i>
+  	{% endfor %}
+  </div>
+  <div class="card-body">
+  	<h3 class="header bold h4"><a href="{{ airdrop.url }}">{{ airdrop.title | replace: " Airdrop", ""  }}</a></h3>
+			<p><span class="header bold">{% if page.lang == 'en' %}Offers:{% else %}Ofrece:{% endif %}</span> {{ airdrop.tokens }}
+
+			{% if airdrop.tokens %}
+				{% if page.lang == 'en' %}{{ airdrop.identifier }} tokens
+				{% else %}monedas {{ airdrop.identifier }}{% endif %}
+
+				{% if airdrop.total_value %}
+					(~${{ airdrop.total_value }})
+				{% endif %}
+			{% else %}
+				~${{ airdrop.total_value }}
+			{% endif %}
+			</p>
+  	
+		<p>
+			<span class="header bold">{% if page.lang == 'en' %}Referrals:{% else %}Referidos:{% endif %}</span>
+			{% if airdrop.ref_value or airdrop.ref_tokens %}
+				{% if airdrop.ref_value %}
+					~${{ airdrop.ref_value}}
+				{% else %}
+					{{ airdrop.ref_tokens }}{% if page.lang == 'en' %} tokens{% else %} monedas{% endif %}
+				{% endif %}
+				{% if page.lang == 'en' %}per referral{% else %}por referido{% endif %}
+			{% else %}
+				no
+			{% endif %}
+		</p>
+
+		<p>
+			{% if airdrop.end or airdrop.limit %}
+				{% if airdrop.end %}
+					<span class="header bold">{% if page.lang == 'en' %}Ends:{% else %}Termina:{% endif %}</span>
+					{{ airdrop.end }}
+				{% else %}
+					<span class="header bold">{% if page.lang == 'en' %}Limit:{% else %}Limite:{% endif %}</span>
+					{{ airdrop.limit }}
+				{% endif %}
+			{% else %}
+				<span class="header bold">{% if page.lang == 'en' %}Ends:{% else %}Termina:{% endif %}</span>
+				{% if page.lang == 'en' %}Not specified{% else %}No especificado{% endif %}
+			{% endif %}
+		</p>
+
+		<p>
+			<span class="header bold">{% if page.lang == 'en' %}Distribution:{% else %}Distribucion:{% endif %}</span>
+	  	{% if airdrop.distribution %}
+	  		{{ airdrop.distribution }}
+			{% else %}	
+				{% if page.lang == 'en' %}Not specified{% else %}No especificado{% endif %}
+	  	{% endif %}
+			
+		</p>
+  </div>
+  <div class="card-footer header bold">
+  	<div class="row">
+			<div class="col-6 how-to" 
+					 onclick="showRequirementsModal(this)" 
+				 data-name="{{ airdrop.title }}" 
+				 data-link="{{ airdrop.link }}">
+				<div class="instructions d-none">
+					{{ airdrop.content }}
+				</div>
+				{% if page.lang == 'en' %}Steps{% else %}Pasos{% endif %}
+			</div>
+			<a href="{{ airdrop.reflink }}" class="col-6 claim" target="_blank">
+				{% if page.lang == 'en' %}Claim{% else %}Reclamar{% endif %}
+			</a>
+		</div>
+  </div>
+</div>

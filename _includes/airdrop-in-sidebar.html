@@ -1,0 +1,23 @@
+<article>
+	<img class="mr-3" src="{{ airdrop.image }}" alt="{{ airdrop.title }}">
+	<div class="content">
+		<h4 class="header">
+			<a href="{{ airdrop.url }}">
+			{{ airdrop.title | replace: " Airdrop", ""  }} 
+			<span>{% if airdrop.total_value %}(~${{ airdrop.total_value }}){% endif %}</span>
+			</a>
+		</h4>
+		<div class="link header bold" 
+				 onclick="showRequirementsModal(this)" 
+				 data-name="{{ airdrop.title }}" 
+				 data-link="{{ airdrop.link }}">
+			{% if page.lang == 'en' %}How to{% else %}Pasos{% endif %}
+			<div class="instructions d-none">
+				{{ airdrop.content }}
+			</div>
+		</div> | 
+		<a href="{{ airdrop.link }}" target="_blank" class="no-icon link">
+			{% if page.lang == 'en' %}Claim{% else %}Reclamar{% endif %}
+		</a>
+	</div>
+</article>

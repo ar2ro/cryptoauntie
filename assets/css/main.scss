@@ -1,0 +1,28 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Fonts
+$base-font-family   : 'Open Sans', sans-serif;
+$header-font-family : 'Montserrat', sans-serif;
+$medium-font-weight : 500;
+$bold-font-weight   : 600;
+$light-font-weight  : 200;
+
+//Colors
+$brand-dark     : #4954ac;
+$brand-light    : #5a67b9;
+$brand-lightest : #7f8cdc;
+$grey-medium    : #e1e1e1;
+$grey-light     : #fcfcfc;
+$white          : #fff;
+$text-color     : #524e4e;
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base"
+;

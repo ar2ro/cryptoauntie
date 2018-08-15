@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="airdrop-detail" itemscope itemtype="http://schema.org/BlogPosting">
+	<header style="background-image: url({{ page.image }});">
+		<div class="container"><h1 class="header bold">{{ page.title }}</h1></div>
+	</header>
+	<div class="container py-4" style="min-height: 30vh">
+		<h2 class="header">
+		{% if page.lang == 'en' %}
+			How to claim:
+		{% else %}
+			Como reclamar:
+		{% endif %}
+		</h2>
+		<p>{{ content }}</p>
+		<hr>
+	</div>
+</article>
+<section class="container">
+	<h2 class="header text-center">
+	{% if page.lang == 'en' %}
+		Latest Airdrops:
+	{% else %}
+		Airdrops Recientes:
+	{% endif %}
+	</h2>
+	<div class="hot-slider d-none light">
+		{% for airdrop in site.airdrops | limit: 10 %}
+			{% if airdrop.lang == page.lang %}
+				{% include airdrop-card.html %}
+			{% endif %}
+		{% endfor %}
+	</div>
+</section>

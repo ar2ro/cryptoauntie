@@ -1,0 +1,143 @@
+---
+layout: default
+---
+<div id="page-content" class="container">
+	{% for post in site.categories.featured limit:2%}
+		{% if page.lang == post.lang %}
+			<article class="main-post py-4 px-4" style="background-image: url({{ post.image }})">
+				<div class="content">
+					<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+					<p class="lead">{{ post.content | strip_html | strip_newlines | truncate: 296 }}</p>
+					<a href="{{ post.url }}" class="btn-white">{{ site.multilingual.more[page.lang] }}</a>
+				</div>
+			</article>
+		{% endif %}
+	{% endfor %}
+
+	<div class="row">
+		<main class="col-md-8 col-lg-9 col-12">
+			<div class="pinned-posts">
+				<div class="row">
+					{% for post in site.categories.pinned limit:4 %}
+						{% if page.lang == post.lang %}
+							<a href="{{ post.url }}" class="col-sm-6 col-md-12 col-lg-6">
+								<article class="px-4" style="background-image: url({{ post.image }});">
+									<h2 class="px-3">{{ post.title }}</h2>
+								</article>
+							</a>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="blog-list">
+				{% for post in site.posts %}
+					{% if page.lang == post.lang %}
+						<article>
+							<div class="row">
+								<div class="col-12 col-sm-3">
+									<div class="post-image">
+										<img src="{{ post.image }}" class="img-fluid" alt="">
+									</div>
+									<span class="minutes right">
+										<i class="far fa-clock"></i> 
+										{% assign words = post.content | number_of_words %}
+									  {% if words < 360 %}
+									    1
+									    {% if page.lang == 'en' %}
+									    	minute read
+									    {% else %}
+												minuto de lectura
+									    {% endif %}
+									  {% else %}
+									    {{ words | divided_by:180 }}
+									    {% if page.lang == 'en' %}
+									    	minutes read
+									    {% else %}
+												minutos de lectura
+									    {% endif %}
+									  {% endif %}
+									</span>
+								</div>
+								<div class="col-12 col-sm-9">
+									<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+									<p>{{ post.content | strip_html | strip_newlines | truncate: 140 }}</p>
+									<a href="{{ post.url }}" class="more brand">Read More</a>
+								</div>
+							</div>
+						</article>
+					{% endif %}
+				{% endfor %}
+				<!--
+				<article>
+					<div class="row">
+						<div class="col-12 col-sm-3">
+							<div class="post-image">
+								<img src="https://placeimg.com/300/300/any" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-sm-9">
+							<h2>Article title</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis inventore ipsa possimus ut consequatur, reiciendis vel expedita adipisci voluptatibus quo architecto consequuntur id earum blanditiis facilis, sed quaerat accusamus minima!</p>
+							<a href="#" class="more brand">Read More</a>
+						</div>
+					</div>
+				</article>
+				<article>
+					<div class="row">
+						<div class="col-12 col-sm-3">
+							<div class="post-image">
+								<img src="https://placeimg.com/300/300/any" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-sm-9">
+							<h2>Article title</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis inventore ipsa possimus ut consequatur, reiciendis vel expedita adipisci voluptatibus quo architecto consequuntur id earum blanditiis facilis, sed quaerat accusamus minima!</p>
+							<a href="#" class="more brand">Read More</a>
+						</div>
+					</div>
+				</article>
+			-->
+			</div>
+		</main>
+		<aside class="col-md-4 col-lg-3 d-none d-md-block">
+			<div class="side-airdrops">
+				<h3>
+					{% if page.lang == 'en' %}
+						Hot Airdrops
+					{% else %}
+						Airdrops Populares
+					{% endif %}
+				</h3>
+				{% assign hotlimit = 0 %}
+				{% for airdrop in site.airdrops reversed %}
+					{% if airdrop.categories contains 'hot' and airdrop.lang == page.lang %}
+						{% assign hotlimit = hotlimit | plus: 1 %}
+						{% if hotlimit <= 4 %}
+							{% include airdrop-in-sidebar.html %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="side-airdrops">
+				<h3>
+					{% if page.lang == 'en' %}
+						Latest Airdrops
+					{% else %}
+						Airdrops Recientes
+					{% endif %}
+				</h3>
+				{% assign latestlimit = 0 %}
+				{% for airdrop in site.airdrops reversed %}
+					{% if airdrop.categories contains 'hot' %}
+					{% elsif airdrop.lang == page.lang %}
+						{% assign latestlimit = latestlimit | plus: 1 %}
+						{% if latestlimit <= 6 %}
+							{% include airdrop-in-sidebar.html %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			{% include how-to-modal.html %}
+		</aside>
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<head>
+	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,500,600%7COpen+Sans" rel="stylesheet">
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  <!-- Slick slider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+	<!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/images/icon.ico" type="image/x-icon">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+  {% if page.admin %}
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{{ "/ignored/admin.css" | prepend: site.baseurl }}">
+    <!-- Multiple select dropdown -->
+    <link href="/ignored/multiple-select.css" rel="stylesheet" />
+  {% endif %}
+	
+  <title>{% if page.title %}{{ page.title[page.lang] }}{% else %}{{ site.title[page.lang] }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.desc[page.lang] }}{% endif %}">
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title[page.lang] }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+  {% assign alternateLink = '' %}
+  {% assign alternate_default = page.url %}
+  {% assign alternate_lang = 'es' %}
+				
+	{% if page.layout == 'airdrop' %}{% comment %} /airdrops/en-es/airdrop-name.html {% endcomment %}
+		{% if page.lang == 'en' %}
+			{% assign alternateLink = page.url | replace: '/en/', '/es/' %}
+		{% else %}
+			{% assign alternateLink = page.url | replace: '/es/', '/en/' %}
+		{% endif %}
+	{% else %}{% comment %} any other page not airdrop detail  {% endcomment %}
+  	{% if page.url == '/' %}{% comment %} index english  {% endcomment %}
+			{% assign alternateLink = '/es/' %}
+		{% elsif page.url == '/es/' %}{% comment %} index spanish  {% endcomment %}
+			{% assign alternateLink = '/' %}
+		{% else %}{% comment %} any other page or post (not index, not airdrop detail)  {% endcomment %}
+			{% assign urlSubStr = page.url | split: '/' %}
+			
+			{% for subStr in urlSubStr %}
+				{% if page.lang == 'en' and forloop.index == 1 %}
+					{% assign alternateLink = alternateLink | append: '/es' %}
+				{% elsif page.lang == 'es' and forloop.index == 1 %}
+					{% assign alternateLink = alternateLink | append: '' %}
+				{% elsif page.lang == 'es' and forloop.index == 2 %}
+					{% assign alternateLink = alternateLink | append: '' %}
+				{% elsif forloop.index == forloop.length %}
+					{% assign alternateLink = alternateLink | append: '/' | append: page.alternate | downcase | replace: ' ', '-' | append: '.html' %}
+				{% else %}
+					{% assign alternateLink = alternateLink | append: '/' | append: subStr %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endif %}
+
+	{% if page.lang == 'es' %}
+		{% assign alternate_default = alternateLink %}
+  	{% assign alternate_lang = 'en' %}
+  {% endif %}
+
+	<link rel="alternate" href="{{ alternate_default | prepend: site.baseurl | prepend: site.url }}" hreflang="x-default" />
+	<link rel="alternate" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}" hreflang="{{ page.lang }}" />
+	<link rel="alternate" href="{{ alternateLink | prepend: site.baseurl | prepend: site.url }}" hreflang="{{ alternate_lang }}" />
+
+
+  <!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122966823-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-122966823-1');
+	</script>
+
+</head>
