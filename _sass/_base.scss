@@ -29,8 +29,9 @@
 	.light {
 		font-weight: $light-font-weight;
 	}
-	.bold {
+	.bold, b {
 		font-weight: $bold-font-weight;
+		font-family: $header-font-family;
 	}
 	.fsize {
 		&06{
@@ -439,6 +440,36 @@
 			padding: 0.5rem 1rem;
 		}
 	}
+
+//Microworkers
+.microworkers {
+	h1 {
+		color: $brand-dark;
+	}
+	.pre-footer {
+		margin-top: 50px;
+		text-align: center;
+		.col {
+			padding-top: 30px;
+			padding-bottom: 30px;
+			font-size: 1.1em!important;
+		}
+		.col:nth-child(1){
+			background: $brand-dark;
+			&, .col:nth-child(1):hover, .col:nth-child(1):active, .col:nth-child(1):focus {
+				color: #fff!important;
+				text-decoration: none;
+			}
+		}
+		.col:nth-child(2){
+			border: 2px solid $brand-dark;
+			&, .col:nth-child(2):hover, .col:nth-child(2):active, .col:nth-child(2):focus {
+				color:$brand-dark!important;
+				text-decoration: none;
+			}
+		}
+	}
+}
 /*
 
 
