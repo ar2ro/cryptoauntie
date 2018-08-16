@@ -71,6 +71,9 @@
 		margin-left: 20px;
 		font-size: 0.95em;
 	}
+	.brand {
+		color: $brand-dark;
+	}
 
 //IMAGES
 	img.bordered {
@@ -318,8 +321,12 @@
 		}
 	}
 	.list {
-		.h1 {
+		.title {
 			margin-bottom: 50px;
+			text-align: center;
+		}
+		.h1 {
+			margin-bottom: 0;
 			color: $brand-dark;
 		}
 		padding: 50px 0;

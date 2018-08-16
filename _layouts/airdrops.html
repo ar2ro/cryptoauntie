@@ -22,13 +22,28 @@ layout: default
 
 <div class="list">
 	<div class="container">
-		<h2 class="h1 header light text-center">
-			{% if page.lang == 'en' %}
-				Latest Airdrops
-			{% else %}
-				Ultimos Airdrops
-			{% endif %}
-		</h2>
+		<div class="title">
+			<h2 class="h1 header light text-center">
+				{% if page.lang == 'en' %}
+					Latest Airdrops
+				{% else %}
+					Ultimos Airdrops
+				{% endif %}
+			</h2>
+			<p>
+				{% assign totalValue = 0 %}
+				{% for airdrop in site.airdrops %}
+					{% if airdrop.total_value and airdrop.lang == page.lang %}
+						{% assign totalValue = totalValue | plus: airdrop.total_value %}
+					{% endif %}
+				{% endfor %}
+				{% if page.lang == 'en' %}
+					<b>Approximate value for all available Airdrops: <b class="brand">${{ totalValue }}</b></b>
+				{% else %}
+					<b>Valor aproximado para todos los Airdrops disponibles: <b class="brand">${{ totalValue }}</b></b>
+				{% endif %}
+			</p>
+		</div>
 		<div class="row">
 			{% for airdrop in site.airdrops reversed %}
 				{% if airdrop.lang == page.lang %}
