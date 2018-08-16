@@ -61,10 +61,10 @@
 					<span class="header bold">{% if page.lang == 'en' %}Limit:{% else %}Limite:{% endif %}</span>
 					{{ airdrop.limit }}
 				{% endif %}
-			{% else %}
+			<!--{% else %}
 				<span class="header bold">{% if page.lang == 'en' %}Ends:{% else %}Termina:{% endif %}</span>
 				{% if page.lang == 'en' %}Not specified{% else %}No especificado{% endif %}
-			{% endif %}
+			{% endif %}-->
 		</p>
 
 		<p>
@@ -72,7 +72,7 @@
 	  	{% if airdrop.distribution %}
 	  		{{ airdrop.distribution }}
 			{% else %}	
-				{% if page.lang == 'en' %}Not specified{% else %}No especificado{% endif %}
+				{% if page.lang == 'en' %}To be anounced{% else %}Sera anunciado{% endif %}
 	  	{% endif %}
 			
 		</p>
