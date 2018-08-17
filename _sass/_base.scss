@@ -5,7 +5,7 @@
 		}
 	}
 	.post, .airdrop-detail {
-		.container {
+		.container:not(.normal) {
 			max-width: 740px!important
 		}
 	}
@@ -437,8 +437,23 @@
 		  -moz-background-size: cover;
 		  -o-background-size: cover;
 		  background-position: center;
-			padding-top: 150px;
-			padding-bottom: 10px;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			margin-bottom: 30px;
+			p {
+				max-width: 60%;
+				padding: 0.5em 1em;
+				background: rgba(255,255,255,0.8);
+				text-align: left;
+				margin: auto;
+				margin-top: 30px;
+				-webkit-box-shadow: 0px 0px 12px -1px rgba(173,173,173,1);
+				-moz-box-shadow: 0px 0px 12px -1px rgba(173,173,173,1);
+				box-shadow: 0px 0px 12px -1px rgba(173,173,173,1);
+			}
+			-webkit-box-shadow: 0px 0px 12px -1px rgba(73,84,172,1);
+			-moz-box-shadow: 0px 0px 12px -1px rgba(73,84,172,1);
+			box-shadow: 0px 0px 12px -1px rgba(73,84,172,1);
 		}
 		h1 {
 			display: inline-block;

@@ -3,7 +3,12 @@ layout: default
 ---
 <article class="airdrop-detail" itemscope itemtype="http://schema.org/BlogPosting">
 	<header style="background-image: url({{ page.image }});">
-		<div class="container"><h1 class="header bold">{{ page.title }}</h1></div>
+		<div class="container normal">
+			<h1 class="header bold">{{ page.title }}</h1>
+			<div class="description">
+				<p>{{ page.description }}</p>
+			</div>
+		</div>
 	</header>
 	<div class="container py-4" style="min-height: 30vh">
 		<h2 class="header">
